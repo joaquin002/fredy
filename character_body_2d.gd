@@ -5,7 +5,7 @@ const SPEED = 300.0
 var mirandoDerecha: bool = false
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 
 	velocity = Vector2.ZERO
 	if Input.is_action_pressed("ui_right"):

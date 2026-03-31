@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bbc2jyk3lm0up"]
+
+[ext_resource type="Script" uid="uid://5pai6bfehrja" path="res://objeto_cae.gd" id="1_f1ft2"]
+[ext_resource type="Texture2D" uid="uid://cia3c8rujmmkk" path="res://imagenes/objetoCae.png" id="1_f3suf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1ft2"]
+size = Vector2(72, 28)
+
+[node name="objetoCae" type="Area2D" unique_id=434469902]
+z_index = 10
+script = ExtResource("1_f1ft2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=363617006]
+z_index = 10
+texture = ExtResource("1_f3suf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1982234592]
+shape = SubResource("RectangleShape2D_f1ft2")

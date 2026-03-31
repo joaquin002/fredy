@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://brvy2uoyuem27" path="res://imagenes/personajeD2.png" id="3_dq4sy"]
 [ext_resource type="Texture2D" uid="uid://csps5arjpknrf" path="res://imagenes/personajeI1.png" id="4_8ccje"]
 [ext_resource type="Texture2D" uid="uid://b881uvpphfxrx" path="res://imagenes/personajeI2.png" id="5_d0fb8"]
+[ext_resource type="Script" uid="uid://bmg0ooyi3tpkg" path="res://enemigo.gd" id="7_d0fb8"]
+[ext_resource type="Texture2D" uid="uid://dy32q5rr11dhw" path="res://imagenes/enemigo1.png" id="8_381gw"]
+[ext_resource type="Texture2D" uid="uid://ilasp8p71mfe" path="res://imagenes/enemigo2.png" id="9_ep5fa"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_381gw"]
 animations = [{
@@ -35,11 +38,28 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ndeuc"]
 size = Vector2(42, 37)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_54tdy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_381gw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ep5fa")
+}],
+"loop": true,
+"name": &"moviemientoEnemigo",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gjpl1"]
+size = Vector2(40, 51)
+
 [node name="nivel01" type="Node2D" unique_id=882001352]
 script = ExtResource("1_dq4sy")
 
 [node name="personajePrincipal" type="CharacterBody2D" parent="." unique_id=588933915]
-position = Vector2(555, 361)
+position = Vector2(1106, 128)
 script = ExtResource("1_l1o55")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="personajePrincipal" unique_id=1431413215]
@@ -49,3 +69,21 @@ animation = &"derecha"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="personajePrincipal" unique_id=316973413]
 position = Vector2(1, -0.5)
 shape = SubResource("RectangleShape2D_ndeuc")
+
+[node name="enemigo" type="Area2D" parent="." unique_id=532703648]
+position = Vector2(122, 94)
+script = ExtResource("7_d0fb8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="enemigo" unique_id=365102434]
+sprite_frames = SubResource("SpriteFrames_54tdy")
+animation = &"moviemientoEnemigo"
+autoplay = "moviemientoEnemigo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemigo" unique_id=1421893183]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_gjpl1")
+
+[node name="TimerObjetoCae" type="Timer" parent="." unique_id=1274532548]
+autostart = true
+
+[connection signal="timeout" from="TimerObjetoCae" to="." method="_on_timer_objeto_cae_timeout"]
