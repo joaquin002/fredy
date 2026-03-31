@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://brvy2uoyuem27" path="res://imagenes/personajeD2.png" id="3_dq4sy"]
 [ext_resource type="Texture2D" uid="uid://csps5arjpknrf" path="res://imagenes/personajeI1.png" id="4_8ccje"]
 [ext_resource type="Texture2D" uid="uid://b881uvpphfxrx" path="res://imagenes/personajeI2.png" id="5_d0fb8"]
-[ext_resource type="PackedScene" uid="uid://ccd05cysjtwxh" path="res://item_01.tscn" id="7_dq4sy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_381gw"]
 animations = [{
@@ -50,5 +49,3 @@ animation = &"derecha"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="personajePrincipal" unique_id=316973413]
 position = Vector2(1, -0.5)
 shape = SubResource("RectangleShape2D_ndeuc")
-
-[node name="item01" parent="." unique_id=1773416782 instance=ExtResource("7_dq4sy")]
