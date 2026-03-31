@@ -3,6 +3,7 @@ extends Node2D
 var anchoLadrillo: float = 48.0
 var altoLadrillo:float = 60.0
 var escenaObjetoCae:PackedScene 
+var escenaDisparo: PackedScene
 
 
 var mapa = [
@@ -39,13 +40,26 @@ func generarLaberinto()->void:
 func _ready() -> void:
 	generarLaberinto()
 	escenaObjetoCae = preload("res://objeto_cae.tscn")
+	escenaDisparo = preload("res://disparo_enemigo.tscn")
 
 func _process(_delta: float) -> void:
 	pass
 
-
 func _on_timer_objeto_cae_timeout() -> void:
-	print("la funcion timer se llama")
 	var objQueCae = escenaObjetoCae.instantiate()
 	objQueCae.position = Vector2(randi()%1280,-30)
 	add_child(objQueCae)
+
+func _on_timer_disparo_timeout() -> void:
+	var disparo = escenaDisparo.instantiate()
+	disparo.position = $enemigo.position
+	var direccion = randi_range(0,3)
+	var velocidad = Vector2(250,0)
+	if direccion == 0:
+		velocidad = Vector2(-250,0)
+	elif direccion == 1:
+		velocidad = Vector2(0,250)
+	elif direccion==2:
+		velocidad = Vector2(0,-250)
+	disparo.velocidad = velocidad
+	add_child(disparo)

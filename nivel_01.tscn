@@ -86,4 +86,8 @@ shape = SubResource("RectangleShape2D_gjpl1")
 [node name="TimerObjetoCae" type="Timer" parent="." unique_id=1274532548]
 autostart = true
 
+[node name="TimerDisparo" type="Timer" parent="." unique_id=875194496]
+autostart = true
+
 [connection signal="timeout" from="TimerObjetoCae" to="." method="_on_timer_objeto_cae_timeout"]
+[connection signal="timeout" from="TimerDisparo" to="." method="_on_timer_disparo_timeout"]
